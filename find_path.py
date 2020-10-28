@@ -1,17 +1,17 @@
 import os
 import json
 
-mydir = 'D:' + os.sep
+target_dir = 'D:' + os.sep
 paths = {}
 file_counter = 0
 path_counter = 0
-MAX_PATH_SIZE = 50000
+MAX_PATH_SIZE = 10000
 
 if __name__ == '__main__':  
     if not os.path.exists('paths'):
         os.mkdir('paths')
 
-    for dirpath, _, filenames in os.walk(mydir):
+    for dirpath, _, filenames in os.walk(target_dir):
         for f in filenames:
             paths.update({os.path.join(dirpath, f): '0'})
             path_counter += 1
