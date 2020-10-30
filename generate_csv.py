@@ -2,12 +2,12 @@ import os
 import csv
 import json
 import pandas
-import queue
 import hashlib
+import time
 from multiprocessing import Process, Pool, cpu_count
 
 DISK_NAME = 'MRI05'
-CSV_DIR = './Miley_201028_MRI05_paths.csv'
+CSV_DIR = ''
 file_counter = 0
 
 
@@ -46,11 +46,12 @@ def save_to_csv_pool(results):
 
 
 if __name__ == '__main__':
+    start = time.time()
     if not os.path.exists('paths'):
         print('Cannot find directory: paths')
     else:
         num_cpu = cpu_count()
-        print('Number of CPU: {}'.format(num_cpu))
+        print('Number of CPU: {}'.format(num_cpu), end='\n\n')
 
         paths = get_paths(file_counter)
         while paths is not None:
@@ -76,3 +77,5 @@ if __name__ == '__main__':
             paths = get_paths(file_counter)
 
         print('All done')
+        end = time.time()
+        print('Time used ' + time.strftime("%H:%M:%S", time.gmtime(end - start)))

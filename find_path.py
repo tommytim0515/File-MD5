@@ -1,7 +1,7 @@
 import os
 import json
 
-target_dir = 'D:\\Pictures' + os.sep
+target_dir = '' + os.sep
 paths = {'finished': '0', 'content': []}
 file_counter = 0
 path_counter = 0
